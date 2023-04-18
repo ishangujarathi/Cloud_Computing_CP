@@ -2,3 +2,4 @@
 /backend/.yarn/cache
 /backend/.yarn/unplugged
 node_modules/
+.env
