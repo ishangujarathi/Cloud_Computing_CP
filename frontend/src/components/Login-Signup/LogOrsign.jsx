@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import * as logFunc from "./loginFunctions.jsx";
 import "./logOrsign.css";
 import { FaFacebookF, FaTwitterSquare } from "react-icons/fa";
+import axios from "axios";
+let url;
+
+process.env.NODE_ENV === "production"
+  ? (url = process.env.URL)
+  : (url = "http://localhost:8080");
 
 export default function LogOrsign({ history }) {
   let [userData, setUserData] = useState({});
@@ -15,17 +21,23 @@ export default function LogOrsign({ history }) {
     setUserData({ ...userData, [title]: value });
   };
 
-  const submitData = (e) => {
+  const submitData = async (e) => {
     e.preventDefault();
     // console.log(userData)
-    logFunc
-      .logUserIn(userData)
-      .then((response) => response.data)
-      .then((data) => {
-        let { token } = data;
-        sessionStorage.setItem("authToken", token);
-        history.push("/routes");
+    try {
+      let apiUrl = `${url}/login`;
+      const res = await axios.post(apiUrl, userData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
+
+      const { token } = res.data;
+      sessionStorage.setItem("authToken", token);
+      history.push("/routes");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleForgot = (e) => {

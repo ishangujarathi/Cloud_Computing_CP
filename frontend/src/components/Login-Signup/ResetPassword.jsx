@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 import "./ResetPassword.css"; // import CSS file for styling
 let url;
 
-process.env.NODE_ENV === 'production' ? url = process.env.URL : url = "http://localhost:8080";
+process.env.NODE_ENV === "production"
+  ? (url = process.env.URL)
+  : (url = "http://localhost:8080");
 
-function ResetPassword({ hash }) {
+function ResetPassword() {
+  const location = useLocation();
+  const email = location.state;
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -20,12 +25,17 @@ function ResetPassword({ hash }) {
     }
 
     try {
-      const response = await axios.post(
-        "${url}/reset-password",
-        { hash, password }
+      const response = await axios.put(
+        `${url}/login/reset/?email=${email}&password=${password}`
       );
-      console.log(response.data); // log response from server
-      setSuccess(true);
+      if (response.status === 200) {
+        console.log(response.data); // log response from server
+        setSuccess(true);
+      } else {
+        {
+          console.log(`Status: ${response.status}, Message: ${response.data}`);
+        }
+      }
     } catch (error) {
       console.error(error);
       setError("Error resetting password.");

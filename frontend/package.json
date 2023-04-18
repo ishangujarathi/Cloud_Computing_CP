@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start:dev": "vite",
-    "build:azure": "vite build && mv dist/* ../public",
+    "build:azure": "vite build && rm -rf ../public/* && mv dist/* ../public",
     "build": "vite build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
