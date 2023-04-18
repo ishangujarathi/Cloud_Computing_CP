@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./ForgotPassword.css";
 
+let url;
+
+process.env.NODE_ENV === 'production' ? url = process.env.URL : url = "http://localhost:8080";
+
 function ForgotPassword() {
   const [email, setEmail] = useState("");
 
@@ -10,7 +14,7 @@ function ForgotPassword() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/forgot-password",
+        `${url}/forgot-password`,
         { email }
       );
       console.log(response.data); // log response from server

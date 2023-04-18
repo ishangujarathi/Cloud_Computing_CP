@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./ResetPassword.css"; // import CSS file for styling
+let url;
+
+process.env.NODE_ENV === 'production' ? url = process.env.URL : url = "http://localhost:8080";
 
 function ResetPassword({ hash }) {
   const [password, setPassword] = useState("");
@@ -18,7 +21,7 @@ function ResetPassword({ hash }) {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/reset-password",
+        "${url}/reset-password",
         { hash, password }
       );
       console.log(response.data); // log response from server

@@ -44,9 +44,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors())
-app.use('/', login);
+app.use(express.static(path.join(__dirname, 'public')));
+app.get("/", (req, res) => {
+ res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+app.use('/login', login);
 app.use('/booking', bookingRoute);
 app.use('/register', registerRouter);  // To register page 
 app.use('/user', passport.authenticate('jwt', { session: false }), loggedInPage); //To Secure Route

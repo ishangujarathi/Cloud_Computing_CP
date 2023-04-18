@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
 import {FaAngleDoubleDown} from 'react-icons/fa';
 import './Tab.css';
+let url;
+
+process.env.NODE_ENV === 'production' ? url = process.env.URL : url = "http://localhost:8080";
+
 export default function SeatSelection() {
   const [name, setName] = useState([]);
   const [arrowDown, setArrowDown] = useState(false);
@@ -29,7 +33,7 @@ export default function SeatSelection() {
   //     else return
   // },[localStorage])
   // const getSeatArray = async bId => {
-  //     const baseURL = "http://localhost:8080/booking/"
+  //     const baseURL = "${url}/booking/"
   //     await axios.get(baseURL, bId)
   //     .this(response=>response.data)
   //     .this(data=>{
