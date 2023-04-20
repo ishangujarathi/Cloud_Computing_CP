@@ -10,13 +10,13 @@ import TicketPage from "./components/TicketPage/TicketPage";
 import ForgotPassword from "./components/Login-Signup/ForgotPassword";
 import ResetPassword from "./components/Login-Signup/ResetPassword";
 import AdminHome from "./components/Homepage/AdminHome";
+import KycApprovalList from "./components/KYC/KycApprovalList";
 import "./App.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 function App({ user }) {
-
   return (
     <div className="App">
       <ToastContainer
@@ -47,6 +47,12 @@ function App({ user }) {
             path="/adminhome"
             exact
             render={(props) => <AdminHome {...props} />}
+          />
+
+          <Route
+            path="/kycList"
+            exact
+            render={(props) => <KycApprovalList {...props} />}
           />
 
           <Route

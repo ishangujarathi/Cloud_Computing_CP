@@ -13,9 +13,10 @@ const jsonParser = bodyParser.json();
 router.post("/", async (req, res, next) => {
   const { email, password } = req.body;
   try {
-    let role;
+    let role, email;
     const doc = await User.findOne({ email: email });
     role = doc?.role;
+    email = doc?.email;
     console.log(doc);
     if (!doc) {
       return res.status(404).json({ message: "User not found" });
@@ -23,7 +24,7 @@ router.post("/", async (req, res, next) => {
     const response = await bcrypt.compare(password, doc.password);
     if (response) {
       const token = jwt.sign({ doc }, "top_secret");
-      return res.status(200).json({ token, role });
+      return res.status(200).json({ token, role, email });
     } else {
       return res.status(401).json({ message: "Authentication failed" });
     }
@@ -32,10 +33,9 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/users", async (req, res) => {
   try {
-    const { email } = req.query;
-    const result = await User.findOne({ email: email });
+    const result = await User.find({});
     res.status(200).json({ result });
   } catch (error) {
     res.status(500).send({ message: "Server Error", error: error });
