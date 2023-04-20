@@ -37,6 +37,7 @@ export default function LogOrsign({ history }) {
       const { role } = res.data;
       console.log(`Role is: ${JSON.stringify(res)}`);
       sessionStorage.setItem("authToken", token);
+      sessionStorage.setItem("role", role);
       toast.success("Login Successful");
       role === "user" ? history.push("/routes") : history.push("/adminhome");
     } catch (error) {
