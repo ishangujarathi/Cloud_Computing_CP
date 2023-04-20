@@ -3,6 +3,7 @@ import * as logFunc from "./loginFunctions.jsx";
 import "./logOrsign.css";
 import { FaFacebookF, FaTwitterSquare } from "react-icons/fa";
 import axios from "axios";
+import { toast } from "react-toastify";
 let url;
 
 process.env.NODE_ENV === "production"
@@ -33,8 +34,11 @@ export default function LogOrsign({ history }) {
       });
 
       const { token } = res.data;
+      const { role } = res.data;
+      console.log(`Role is: ${JSON.stringify(res)}`);
       sessionStorage.setItem("authToken", token);
-      history.push("/routes");
+      toast.success("Login Successful");
+      role === "user" ? history.push("/routes") : history.push("/adminhome");
     } catch (error) {
       console.error(error);
     }
@@ -53,21 +57,6 @@ export default function LogOrsign({ history }) {
               <div className="form-area login-form">
                 <div className="form-content">
                   <h2>Login</h2>
-                  <p>you chose the right option</p>
-                  <ul>
-                    <li>
-                      <a href="/#" className="facebook">
-                        <FaFacebookF />
-                      </a>
-                    </li>
-                  </ul>
-                  <ul>
-                    <li>
-                      <a href="/#" className="twitter">
-                        <FaTwitterSquare />
-                      </a>
-                    </li>
-                  </ul>
                 </div>
                 <div className="form-input">
                   <h2>Enter Credentials</h2>
@@ -102,18 +91,30 @@ export default function LogOrsign({ history }) {
                       </button>
                     </div>
                     <div>
-                      <small className="form-text text-muted signup-text">
+                      <small
+                        className="form-text text-muted signup-text"
+                        style={{ fontSize: "1.1rem" }}
+                      >
                         Already a User?
                       </small>
                     </div>
                     &nbsp;&nbsp;&nbsp;
                     <span className="signUPtext">
-                      <a href="/#" onClick={(e) => getToSignUp(e)}>
+                      <a
+                        href="/#"
+                        onClick={(e) => getToSignUp(e)}
+                        className="signup-a"
+                        style={{ fontSize: "1.1rem" }}
+                      >
                         Sign-Up
                       </a>
                     </span>
                   </form>
-                  <button className="forgotPassword" onClick={handleForgot}>
+                  <button
+                    className="forgotPassword"
+                    onClick={handleForgot}
+                    style={{ fontSize: "1em", marginLeft: "10px" }}
+                  >
                     Forgot Password
                   </button>
                 </div>

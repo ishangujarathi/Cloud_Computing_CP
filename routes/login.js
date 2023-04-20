@@ -2,13 +2,13 @@ const express = require("express");
 const passport = require("passport");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-var bcrypt = require("bcrypt");
-var bodyParser = require("body-parser");
-var moment = require("moment");
+const bcrypt = require("bcrypt");
+const bodyParser = require("body-parser");
+const moment = require("moment");
 
 const router = express.Router();
 //Body-Parser
-var jsonParser = bodyParser.json();
+const jsonParser = bodyParser.json();
 
 router.post("/", async (req, res, next) => {
   const { email, password } = req.body;
@@ -27,6 +27,16 @@ router.post("/", async (req, res, next) => {
     }
   } catch (error) {
     return res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    const { email } = req.query;
+    const result = await User.findOne({ email: email });
+    res.status(200).json({ result });
+  } catch (error) {
+    res.status(500).send({ message: "Server Error", error: error });
   }
 });
 

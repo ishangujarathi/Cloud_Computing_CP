@@ -1,16 +1,16 @@
-var express = require("express");
-var router = express.Router();
-var User = require("../models/User");
-var bcrypt = require("bcrypt");
-var moment = require("moment");
-var bodyParser = require("body-parser");
+const express = require("express");
+const router = express.Router();
+const User = require("../models/User");
+const bcrypt = require("bcrypt");
+const moment = require("moment");
+const bodyParser = require("body-parser");
 
 router.get("/", (req, res) => {
   res.send("Register Here");
 });
 
 //Body-Parser
-var jsonParser = bodyParser.json();
+const jsonParser = bodyParser.json();
 
 router.post("/", jsonParser, async (req, res) => {
   //Hash Password

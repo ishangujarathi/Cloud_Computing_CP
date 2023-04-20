@@ -37,6 +37,13 @@ p.lead {
   z-index: 10;
 }
 
+.flexCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+
 .row.full {
   width: 80%;
 }
@@ -48,10 +55,20 @@ p.lead {
 
 .left-divider {
   border-left: solid 1px rgb(3, 4, 5);
-  width: 50%;
+  width: 100%;
   background: white;
-  padding-top: 30px;
-  padding-left: 20px;
+  padding: 1vw;
+  border-radius: 2vw;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.form-control {
+  width: 49%;
 }
 
 .lead-text {
@@ -162,7 +179,6 @@ p.lead {
   margin-top: 20px;
   margin-left: 25px;
   font-size: 20px;
-  text-transform: capitalize;
   border-radius: 4px;
   text-align: center;
   border: 1px solid #3b579d;
@@ -182,7 +198,6 @@ p.lead {
   margin-top: 20px;
   margin-left: 25px;
   font-size: 20px;
-  text-transform: capitalize;
   border-radius: 4px;
   text-align: center;
   border: 1px solid #3b579d;
@@ -200,15 +215,12 @@ p.lead {
 
 input.form-submit {
   padding: 5px 20px;
-  font-size: 1.3em;
   font-weight: 300;
-  text-transform: capitalize;
   margin-top: 30px;
 }
 
 .form-group2 {
-  width: 20em;
-  padding-left: 20px;
+  width: 17em;
 }
 
 .rd {
@@ -218,6 +230,9 @@ input.form-submit {
 }
 
 .rd > input {
+  border-radius: 50%;
+  width: 14px;
+  height: 26px;
   padding-left: 20px;
 }
 
@@ -229,16 +244,16 @@ input.form-submit {
 
 .link-text {
   padding-bottom: 5px;
-  padding-left: 50%;
+  margin-left: -14%;
 }
 
 .signuptext {
   color: green;
   position: relative;
-  left: 100%;
-  top: -27px;
   padding-right: 10px;
   cursor: pointer;
+  left: 15%;
+  top: -7px;
 }
 
 .signuptext:hover {
@@ -248,6 +263,7 @@ input.form-submit {
 .sub-btn {
   background: rgba(103, 58, 183);
   border-color: rgba(103, 58, 183);
+  color: white;
 }
 
 .sub-btn:hover {
@@ -259,8 +275,22 @@ input.form-submit {
 }
 
 .sgnUp {
-  margin-left: 0;
+  overflow: hidden;
+  margin-left: 27%;
 }
+
+.sgnUpt {
+  width: 32em;
+}
+
+.flexColR {
+  margin-right: -7%;
+}
+
+.flexColL {
+  margin-left: -32%;
+}
+
 .pdding {
   padding-left: 0;
 }

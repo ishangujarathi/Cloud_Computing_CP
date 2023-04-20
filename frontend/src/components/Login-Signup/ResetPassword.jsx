@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import "./ResetPassword.css"; // import CSS file for styling
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 let url;
 
 process.env.NODE_ENV === "production"
@@ -10,6 +11,7 @@ process.env.NODE_ENV === "production"
 
 function ResetPassword() {
   const location = useLocation();
+  const history = useHistory();
   const email = location.state;
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -31,6 +33,7 @@ function ResetPassword() {
       if (response.status === 200) {
         console.log(response.data); // log response from server
         setSuccess(true);
+        history.push("/login");
       } else {
         {
           console.log(`Status: ${response.status}, Message: ${response.data}`);

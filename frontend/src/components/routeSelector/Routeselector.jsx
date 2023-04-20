@@ -1,15 +1,17 @@
-import React, {useState} from 'react';
-import './Routeselector.css';
-import * as apiCall from './routeApifunc';
-import BusList from '../BusList/BusList';
+import React, { useState } from "react";
+import "./Routeselector.css";
+import * as apiCall from "./routeApifunc";
+import BusList from "../BusList/BusList";
+import { toast } from "react-toastify";
+
 export default function Routeselector() {
-  const [dataInp, setData] = useState('');
-  const [startCity, setStartCity] = useState('');
-  const [destination, setDestination] = useState('');
+  const [dataInp, setData] = useState("");
+  const [startCity, setStartCity] = useState("");
+  const [destination, setDestination] = useState("");
   const handleToCity = (e) => {
     e.preventDefault();
-    setDestination({destination: e.target.value});
-    localStorage.setItem('destination', e.target.value);
+    setDestination({ destination: e.target.value });
+    localStorage.setItem("destination", e.target.value);
   };
   const renderBusList = (dataInp) => {
     if (Object.keys(dataInp).length > 0) {
@@ -18,8 +20,8 @@ export default function Routeselector() {
   };
   const handleFromCity = (e) => {
     e.preventDefault();
-    setStartCity({startCity: e.target.value});
-    localStorage.setItem('start', e.target.value);
+    setStartCity({ startCity: e.target.value });
+    localStorage.setItem("start", e.target.value);
     // console.log(startCity)
   };
 
@@ -32,23 +34,25 @@ export default function Routeselector() {
       .then((data) => {
         setData(data.bus);
       });
+    toast.success("Routes Fetched");
   };
 
   const handleDate = (e) => {
     e.preventDefault();
     //    console.log(e.target.value)
-    localStorage.setItem('date', e.target.value);
+    localStorage.setItem("date", e.target.value);
+    toast.success("Date Selected");
   };
 
   return (
-    <div className='rdc'>
-      <div className='form-group inline'></div>
-      <div className='main-container'>
-        <form className='form-inline' onSubmit={(e) => getRoutes(e)}>
+    <div className="rdc">
+      <div className="form-group inline"></div>
+      <div className="main-container">
+        <form className="form-inline" onSubmit={(e) => getRoutes(e)}>
           <select
-            name='ad_account_selected'
-            data-style='btn-new'
-            className='selectpicker'
+            name="ad_account_selected"
+            data-style="btn-new"
+            className="selectpicker"
             onChange={(e) => {
               handleFromCity(e);
             }}
@@ -58,9 +62,9 @@ export default function Routeselector() {
             <option>Bangalore</option>
           </select>
           <select
-            name='ad_account_selected'
-            data-style='btn-new'
-            className='selectpicker'
+            name="ad_account_selected"
+            data-style="btn-new"
+            className="selectpicker"
             onChange={(e) => {
               handleToCity(e);
             }}
@@ -76,9 +80,9 @@ export default function Routeselector() {
             onChange={(e) => {
               handleDate(e);
             }}
-            type='date'
+            type="date"
           ></input>
-          <input type='submit' className=' btn btn-primary btn-md getRoute' />
+          <input type="submit" className=" btn btn-primary btn-md getRoute" />
         </form>
 
         <div>{renderBusList(dataInp)}</div>

@@ -1,34 +1,46 @@
 body {
-    background: url('./bg.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.page{
-    position: absolute;
+html {
+  height: 100%;
 }
 
-
-.fade-appear, .fade-enter {
-    opacity: 0;
-    z-index: 1;
+body {
+  background: url("/src/bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  filter: grayscale(20%) brightness(90%) contrast(120%);
+  -webkit-backdrop-filter: blur(5px) brightness(90%) contrast(120%);
+  backdrop-filter: blur(5px) brightness(90%) contrast(120%);
 }
 
-.fade-appear-active, .fade-enter.fade-enter-active {
-    opacity: 1;
-    transition: opacity 300ms linear 150ms;
+.page {
+  position: absolute;
 }
 
-.fade-exit{
-    opacity: 1;
+.fade-appear,
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
 }
 
-.fade-exit.fade-exit-active{
-    opacity: 1;
-    transition: opacity 150ms linear;
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms linear 150ms;
+}
 
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 1;
+  transition: opacity 150ms linear;
 }

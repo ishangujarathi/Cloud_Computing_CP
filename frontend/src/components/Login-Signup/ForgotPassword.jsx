@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 import "./ForgotPassword.css";
 
 let url;
@@ -23,11 +24,9 @@ function ForgotPassword() {
         `${url}/login/answer/?answer=${answer}&email=${email}`
       );
       if (response.data.response === true) {
-        history.push({pathname: "/reset", state:  email });
-        console.log(`Response is : ${JSON.stringify(response)}`);
+        history.push({ pathname: "/reset", state: email });
       } else {
-        alert("Incorrect answer");
-        console.log(`Response is : ${JSON.stringify(response)}`);
+        toast.error("Incorrect answer");
       }
     } catch (error) {
       console.error(error);
@@ -40,8 +39,6 @@ function ForgotPassword() {
     const res = await axios.get(`${url}/login/question/?email=${email}`);
 
     setQuestion(res.data.question);
-
-    console.log(`The response is: ${JSON.stringify(res)}`);
   };
 
   return (

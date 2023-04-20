@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import * as signupFunc from "./SignupFunctions";
-import { FaFacebookF, FaTwitterSquare } from "react-icons/fa";
 import "./signup.css";
+import { toast } from "react-toastify";
+
 export default function Signup({ history }) {
   let [newUser, setnewUser] = useState({});
   const handleChangeEvent = (e, field) => {
@@ -20,6 +21,7 @@ export default function Signup({ history }) {
     e.preventDefault();
     signupFunc.registerUser(newUser).then((response) => response.data);
     console.log(newUser);
+    toast.success("User Registered Successfully");
     history.push("/login");
   };
 
@@ -31,47 +33,74 @@ export default function Signup({ history }) {
             <div className="form-container">
               <div className="form-container-in"> </div>{" "}
               <div className="row sgnUp ">
-                <div className="col-md-6 right-divider pdding">
-                  <h3 className="lead-text mn-txt"> Join Us with Social </h3>{" "}
-                  <div className="icon-soc-fb">
-                    <FaFacebookF />
-                  </div>{" "}
-                  <div className="icon-soc-tw">
-                    <FaTwitterSquare />
-                  </div>{" "}
-                </div>{" "}
                 <div className="left-divider">
-                  <div className="col-md-6">
+                  <div className="colcol">
                     <form onSubmit={(e) => submitData(e)}>
-                      <div className="form-group2">
-                        <label htmlFor="name"> Name: </label>{" "}
-                        <input
-                          id="name"
-                          type="text"
-                          className="form-control sgnUp"
-                          onChange={(e) => handleChangeEvent(e, "name")}
-                        />{" "}
-                      </div>{" "}
-                      <div className="form-group2">
-                        <label htmlFor="email"> Email - ID: </label>{" "}
-                        <input
-                          required
-                          id="email"
-                          type="email"
-                          className="form-control sgnUp"
-                          onChange={(e) => handleChangeEvent(e, "email")}
-                        />{" "}
-                      </div>{" "}
-                      <div className="form-group2">
-                        <label htmlFor="mob-number"> Mobile - No.: </label>{" "}
-                        <input
-                          required
-                          id="mob-number"
-                          type="text"
-                          className="form-control sgnUp"
-                          onChange={(e) => handleChangeEvent(e, "mobile")}
-                        />{" "}
-                      </div>{" "}
+                      <section className="flexCont">
+                        <section className="flexColR">
+                          <div className="form-group2 sgnUpt">
+                            <label htmlFor="name"> Name: </label>{" "}
+                            <input
+                              id="name"
+                              type="text"
+                              className="form-control sgnUp"
+                              onChange={(e) => handleChangeEvent(e, "name")}
+                            />{" "}
+                          </div>{" "}
+                          <div className="form-group2 sgnUpt">
+                            <label htmlFor="email"> Email - ID: </label>{" "}
+                            <input
+                              required
+                              id="email"
+                              type="email"
+                              className="form-control sgnUp"
+                              onChange={(e) => handleChangeEvent(e, "email")}
+                            />{" "}
+                          </div>{" "}
+                          <div className="form-group2 sgnUpt">
+                            <label htmlFor="mob-number"> Mobile - No.: </label>{" "}
+                            <input
+                              required
+                              id="mob-number"
+                              type="text"
+                              className="form-control sgnUp"
+                              onChange={(e) => handleChangeEvent(e, "mobile")}
+                            />{" "}
+                          </div>{" "}
+                        </section>
+                        <section className="flexColL">
+                          <div className="form-group2 sgnUpt">
+                            <label htmlFor="password"> Password: </label>{" "}
+                            <input
+                              required
+                              id="password"
+                              type="password"
+                              className="form-control sgnUp"
+                              onChange={(e) => handleChangeEvent(e, "password")}
+                            />{" "}
+                          </div>{" "}
+                          <div className="form-group2 sgnUpt">
+                            <label htmlFor="question"> Question: </label>{" "}
+                            <input
+                              required
+                              id="question"
+                              type="text"
+                              className="form-control sgnUp"
+                              onChange={(e) => handleChangeEvent(e, "question")}
+                            />{" "}
+                          </div>{" "}
+                          <div className="form-group2 sgnUpt">
+                            <label htmlFor="answer"> Answer: </label>{" "}
+                            <input
+                              required
+                              id="answer"
+                              type="text"
+                              className="form-control sgnUp"
+                              onChange={(e) => handleChangeEvent(e, "answer")}
+                            />{" "}
+                          </div>{" "}
+                        </section>
+                      </section>
                       <div className="form-check form-check-inline rd">
                         <input
                           required
@@ -100,53 +129,32 @@ export default function Signup({ history }) {
                           Female{" "}
                         </label>{" "}
                       </div>{" "}
-                      <div className="form-group2">
-                        <label htmlFor="password"> Password: </label>{" "}
-                        <input
-                          required
-                          id="password"
-                          type="password"
-                          className="form-control sgnUp"
-                          onChange={(e) => handleChangeEvent(e, "password")}
-                        />{" "}
+                      <div>
+                        <br />
+                        <small
+                          className="form-text text-muted link-text"
+                          style={{ fontSize: "1.2em" }}
+                        >
+                          Already a User ?
+                        </small>{" "}
+                        <span className="signuptext">
+                          <a
+                            href="/#"
+                            onClick={(e) => getToSignIn(e)}
+                            style={{ fontSize: "1.2em" }}
+                          >
+                            Sign - In{" "}
+                          </a>{" "}
+                        </span>{" "}
                       </div>{" "}
-                      <div className="form-group2">
-                        <label htmlFor="question"> Question: </label>{" "}
+                      <div className="form-group2 sgnUpt">
                         <input
-                          required
-                          id="question"
-                          type="text"
-                          className="form-control sgnUp"
-                          onChange={(e) => handleChangeEvent(e, "question")}
-                        />{" "}
-                      </div>{" "}
-                      <div className="form-group2">
-                        <label htmlFor="answer"> Answer: </label>{" "}
-                        <input
-                          required
-                          id="answer"
-                          type="text"
-                          className="form-control sgnUp"
-                          onChange={(e) => handleChangeEvent(e, "answer")}
-                        />{" "}
-                      </div>{" "}
-                      <div className="form-group2">
-                        <input
+                          style={{ fontSize: "1.2em" }}
                           required
                           type="submit"
                           value="submit"
                           className="btn-primary btnn form-submit sub-btn sgnUp"
                         />
-                      </div>{" "}
-                      <div>
-                        <small className="form-text text-muted link-text">
-                          Already a User ?
-                        </small>{" "}
-                        <span className="signuptext">
-                          <a href="/#" onClick={(e) => getToSignIn(e)}>
-                            Sign - In{" "}
-                          </a>{" "}
-                        </span>{" "}
                       </div>{" "}
                     </form>{" "}
                   </div>{" "}

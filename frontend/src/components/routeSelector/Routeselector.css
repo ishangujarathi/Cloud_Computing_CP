@@ -1,54 +1,57 @@
 .rdc {
-    margin-left: -15px;
-    height: auto;
-    width: auto;
-    border: 1px solid #00acee;
-    background-color: #00abeeb0;
+  margin-left: -15px;
+  height: auto;
+  width: auto;
+  border: 1px solid #00acee;
+  background-color: #00abeeb0;
 }
 
-.dropdown:hover>.dropdown-menu {
-    display: block;
+.dropdown:hover > .dropdown-menu {
+  display: block;
 }
 
-.dropdown>.dropdown-toggle:active {
-    pointer-events: none;
+.dropdown > .dropdown-toggle:active {
+  pointer-events: none;
 }
 
-.main-container{
-    height:auto;
-    padding:15px 20px;
+.main-container {
+  height: auto;
+  padding: 15px 20px;
 }
 
-.dropdown{
-    display:inline-block
+.dropdown {
+  display: inline-block;
 }
 
-::-webkit-datetime-edit { padding: 4px; }
-
-.date{
-    position: relative;
-    top:2px;
+::-webkit-datetime-edit {
+  padding: 4px;
 }
-.getRoute{
-    margin-left: 180px;
+
+.date {
+  position: relative;
+  top: 2px;
+}
+.getRoute {
+  margin-left: 180px;
 }
 select.selectpicker {
-    display: inline-block;
-    margin: 0 auto;
-    padding-left: 20px;
-    padding:7px 7px;
-    border-radius:5px;
-    outline:none;
-    border: none;
+  display: inline-block;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding: 7px 7px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  margin-right: 0.5%;
 }
 .btn-new {
-    background-color: rgb(68, 141, 214);
+  background-color: rgb(68, 141, 214);
 }
-input{
-    margin-right:10px;
-    margin-left:35px;
+input {
+  margin-right: 10px;
+  margin-left: 35px;
 }
 
-.margin-left{
-    margin-left: 200px;
+.margin-left {
+  margin-left: 200px;
 }
