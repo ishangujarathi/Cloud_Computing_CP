@@ -11,11 +11,7 @@ import {
   formatCVC,
   formatExpirationDate,
 } from "./utils";
-let url;
-
-process.env.NODE_ENV === "production"
-  ? (url = process.env.URL)
-  : (url = "http://localhost:8080");
+const url = process.env.URL
 import "./PaymentTab.css";
 
 const PaymentTab = () => {

@@ -2,11 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-let url;
-
-process.env.NODE_ENV === "production"
-  ? (url = process.env.URL)
-  : (url = "http://localhost:8080");
+const url = process.env.URL
 
 const KycApprovalList = () => {
   const [users, setUsers] = useState([]);

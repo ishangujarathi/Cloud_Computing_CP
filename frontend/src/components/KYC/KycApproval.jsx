@@ -5,11 +5,7 @@ import { createPortal } from "react-dom";
 import { toast } from "react-toastify";
 import styles from "./kycapproval.module.css";
 
-let url;
-
-process.env.NODE_ENV === "production"
-  ? (url = process.env.URL)
-  : (url = "http://localhost:8080");
+const url = process.env.URL
 
 const KycApproval = () => {
   const [userInfo, setUserInfo] = useState(null);

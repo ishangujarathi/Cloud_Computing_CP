@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import "./logOrsign.css";
 import axios from "axios";
 import { toast } from "react-toastify";
-let url;
-
-process.env.NODE_ENV === "production"
-  ? (url = process.env.URL)
-  : (url = "http://localhost:8080");
+const url = process.env.URL
 
 export default function LogOrsign({ history }) {
   let [userData, setUserData] = useState({});

@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import "./Tab.css";
 import useKycStatus from "../../hooks/useKycStatus";
-let url;
-
-process.env.NODE_ENV === "production"
-  ? (url = process.env.URL)
-  : (url = "http://localhost:8080");
+const url = process.env.URL
 import { toast } from "react-toastify";
 
 export default function SeatSelection() {
