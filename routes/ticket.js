@@ -53,3 +53,5 @@ router.get("/", async (req, res) => {
     res.status(500).send({ message: "Server Error", error: error });
   }
 });
+
+module.exports = router;

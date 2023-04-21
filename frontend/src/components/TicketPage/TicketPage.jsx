@@ -46,7 +46,7 @@ export default function TicketPage({ history }) {
       date: dat,
     }
 
-    axios.post("http://localhost:5000/api/ticket", data).then((res) => { toast.success(res.data.message) }).catch((err) => { toast.error(err) });
+    axios.post("http://localhost:8080/api/ticket", data).then((res) => { toast.success(res.data.message) }).catch((err) => { toast.error(err) });
   }
 
   return (

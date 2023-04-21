@@ -1,8 +1,7 @@
 .tpMain {
   width: 100%;
-  padding: 2px 100px;
-  height: 500px;
-  margin-left: 220px;
+  padding: 2px 2rem;
+  height: auto;
 }
 
 *,
@@ -25,7 +24,7 @@ body {
 .ticket {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  max-width: 24rem;
+  max-width: 30rem;
 }
 
 .ticket__header,
@@ -98,9 +97,9 @@ body {
   right: 0;
 }
 
+/* Use relative units to ensure responsiveness */
 .ticket__body {
-  border-bottom: none;
-  border-top: none;
+  border: none;
 }
 
 .ticket__body > * + * {
@@ -138,6 +137,30 @@ body {
 }
 
 .idData {
-  font-size: 15px;
+  font-size: 0.9375rem; /* 15px */
   text-transform: uppercase;
+}
+
+/* Use media queries to adjust styles based on screen size */
+@media only screen and (max-width: 768px) {
+  .ticket__body > * + * {
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+
+  .ticket__section > h3 {
+    font-size: 1rem;
+  }
+
+  .ticket__header {
+    font-size: 1.125rem;
+  }
+
+  .ticket__footer {
+    font-size: 1.125rem;
+  }
+
+  .idData {
+    font-size: 0.8125rem; /* 13px */
+  }
 }

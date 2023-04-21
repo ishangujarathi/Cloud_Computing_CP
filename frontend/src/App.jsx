@@ -10,11 +10,11 @@ import TicketPage from "./components/TicketPage/TicketPage";
 import ForgotPassword from "./components/Login-Signup/ForgotPassword";
 import ResetPassword from "./components/Login-Signup/ResetPassword";
 import AdminHome from "./components/Homepage/AdminHome";
+import PreviousHistory from "./components/PrevHist/PreviousHistory";
 import KycApprovalList from "./components/KYC/KycApprovalList";
 import "./App.css";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
 
 function App({ user }) {
   return (
@@ -36,7 +36,7 @@ function App({ user }) {
           <Route path="/" exact render={(props) => <Homepage {...props} />} />
           <Route path="/login" render={(props) => <LogOrsign {...props} />} />
           <Route path="/register" render={(props) => <Signup {...props} />} />
-          <Route path'/prevHist' render={(props) => <PrevHistory {...props} />} />
+          <Route path="/prevHist" render={(props) => <PreviousHistory {...props} />} />
           <Route
             path="/routes"
             exact

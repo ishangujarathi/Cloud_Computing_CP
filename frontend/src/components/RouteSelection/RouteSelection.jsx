@@ -17,7 +17,7 @@ export default function RouteSelection({ history }) {
     localStorage.removeItem("nameData");
     localStorage.removeItem("email");
     localStorage.removeItem("name");
-    localStorage.removeItem("numOfBookings"); 
+    localStorage.removeItem("numOfBookings");
     localStorage.clear();
     toast.success("Logged Out Successfully");
     history.push("/");
@@ -92,6 +92,11 @@ export default function RouteSelection({ history }) {
           <li className="nav-item">
             <a className="nav-link" data-toggle="pill" href="#menu2">
               Payment
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" style={{ cursor: "pointer" }} data-toggle="pill" onClick={(e) => { e.preventDefault(); history.push("/prevHist") }}>
+              My Passes
             </a>
           </li>
         </ul>
