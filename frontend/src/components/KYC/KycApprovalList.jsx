@@ -13,7 +13,7 @@ const KycApprovalList = () => {
     axios.defaults.withCredentials = true;
     const fetchUsers = async () => {
       await axios
-        .get(`https://localhost:8080/login/users`)
+        .get(`https://localhost:8080/api/login/users`)
         .then((res) => {
           setUsers(res?.data);
         })

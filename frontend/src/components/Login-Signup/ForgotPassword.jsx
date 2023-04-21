@@ -21,7 +21,7 @@ function ForgotPassword() {
 
     try {
       const response = await axios.get(
-        `${url}/login/answer/?answer=${answer}&email=${email}`
+        `${url}/api/login/answer/?answer=${answer}&email=${email}`
       );
       if (response.data.response === true) {
         history.push({ pathname: "/reset", state: email });
@@ -36,7 +36,7 @@ function ForgotPassword() {
   const handleEmailSubmit = async (event) => {
     event.preventDefault();
 
-    const res = await axios.get(`${url}/login/question/?email=${email}`);
+    const res = await axios.get(`${url}/api/login/question/?email=${email}`);
 
     setQuestion(res.data.question);
   };

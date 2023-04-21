@@ -3,15 +3,22 @@ import { useHistory } from "react-router-dom";
 import Card from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 import { toast } from "react-toastify";
+import axios from "axios";
 import jwt_decode from "jwt-decode";
 import {
   formatCreditCardNumber,
   formatCVC,
   formatExpirationDate,
 } from "./utils";
+let url;
+
+process.env.NODE_ENV === "production"
+  ? (url = process.env.URL)
+  : (url = "http://localhost:8080");
 import "./PaymentTab.css";
 
 const PaymentTab = () => {
+  const email = localStorage.getItem("email");
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [expiry, setExpiry] = useState("");
@@ -24,7 +31,7 @@ const PaymentTab = () => {
   const formRef = useRef(null);
 
   useEffect(() => {
-    const tok = sessionStorage.getItem("authToken");
+    const tok = localStorage.getItem("authToken");
     const decoded = jwt_decode(tok);
     setToken(decoded.user);
   }, []);
@@ -68,11 +75,11 @@ const PaymentTab = () => {
     formRef.current.reset();
   };
 
-  const moveToTicketPage = (e) => {
+  const moveToTicketPage = async (e) => {
     e.preventDefault();
     localStorage.setItem("paymentData", JSON.stringify(token));
-    history.push("/getTicket");
-  };
+    await axios.put(`${url}/api/login/bookings/?email=${email}`).then((res) => { history.push("/getTicket"); }).catch((err) => { console.log(err) });
+  }
 
   const renderNamesOfPassenger = () => {
     let passArray = localStorage.getItem("nameData");

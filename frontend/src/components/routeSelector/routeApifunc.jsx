@@ -6,7 +6,7 @@ process.env.NODE_ENV === "production"
   : (url = "http://localhost:8080");
 
 export async function getRoutesFromApi(startCity, destination) {
-  const baseURL = `${url}/booking/`;
+  const baseURL = `${url}/api/booking/`;
   let incoming = await axios.post(baseURL, { startCity, destination });
   return incoming;
 }

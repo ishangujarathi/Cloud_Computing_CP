@@ -11,8 +11,9 @@ var app = express();
 
 // Login and Register
 require("./auth/auth");
-const login = require("./routes/login");
+const loginRouter = require("./routes/login");
 const loggedInPage = require("./routes/loggedInUser");
+const ticketRouter = require("./routes/ticket");
 // ----------------------------------------------------
 
 const bookingRoute = require("./routes/routeSelection");
@@ -47,11 +48,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
-app.use("/login", login);
-app.use("/booking", bookingRoute);
-app.use("/register", registerRouter); // To register page
+app.use("/api/login", loginRouter);
+app.use("/api/booking", bookingRoute);
+app.use("/api/register", registerRouter); // To register page
+app.use("/api/ticket", ticketRouter);
 app.use(
-  "/user",
+  "/api/user",
   passport.authenticate("jwt", { session: false }),
   loggedInPage
 ); //To Secure Route

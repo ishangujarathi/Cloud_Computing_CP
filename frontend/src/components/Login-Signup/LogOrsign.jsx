@@ -26,18 +26,20 @@ export default function LogOrsign({ history }) {
     e.preventDefault();
     // console.log(userData)
     try {
-      let apiUrl = `${url}/login`;
+      let apiUrl = `${url}/api/login`;
       const res = await axios.post(apiUrl, userData, {
         headers: {
           "Content-Type": "application/json",
         },
       });
 
-      const { token, role, email } = res.data;
+      const { token, role, email, name, bookings } = res.data;
       console.log(`Role is: ${JSON.stringify(res)}`);
-      sessionStorage.setItem("authToken", token);
-      sessionStorage.setItem("role", role);
-      sessionStorage.setItem("email", email);
+      localStorage.setItem("authToken", token);
+      localStorage.setItem("role", role);
+      localStorage.setItem("email", email);
+      localStorage.setItem("name", name);
+      localStorage.setItem("numOfBookings", bookings);
       toast.success("Login Successful");
       role === "user" ? history.push("/routes") : history.push("/adminhome");
     } catch (error) {

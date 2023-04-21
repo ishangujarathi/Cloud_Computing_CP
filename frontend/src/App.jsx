@@ -36,7 +36,7 @@ function App({ user }) {
           <Route path="/" exact render={(props) => <Homepage {...props} />} />
           <Route path="/login" render={(props) => <LogOrsign {...props} />} />
           <Route path="/register" render={(props) => <Signup {...props} />} />
-
+          <Route path'/prevHist' render={(props) => <PrevHistory {...props} />} />
           <Route
             path="/routes"
             exact

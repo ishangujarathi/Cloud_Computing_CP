@@ -2,7 +2,7 @@ import React from "react";
 import "./adminhome.css";
 
 function AdminHome() {
-  const role = sessionStorage.getItem("role");
+  const role = localStorage.getItem("role");
   return (
     <>
       {role === "admin" ? (

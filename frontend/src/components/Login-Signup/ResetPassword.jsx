@@ -28,7 +28,7 @@ function ResetPassword() {
 
     try {
       const response = await axios.put(
-        `${url}/login/reset/?email=${email}&password=${password}`
+        `${url}/api/login/reset/?email=${email}&password=${password}`
       );
       if (response.status === 200) {
         console.log(response.data); // log response from server

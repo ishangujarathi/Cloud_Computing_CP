@@ -12,9 +12,12 @@ export default function RouteSelection({ history }) {
 
   const handleSignOut = (e) => {
     e.preventDefault();
-    sessionStorage.removeItem("authToken");
+    localStorage.removeItem("authToken");
     localStorage.removeItem("reservedSeats");
     localStorage.removeItem("nameData");
+    localStorage.removeItem("email");
+    localStorage.removeItem("name");
+    localStorage.removeItem("numOfBookings"); 
     localStorage.clear();
     toast.success("Logged Out Successfully");
     history.push("/");

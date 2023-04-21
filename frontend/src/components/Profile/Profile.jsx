@@ -1,14 +1,27 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './profile.css';
-import jwt_decode from 'jwt-decode';
+let url;
 
-export default function Profile({history}) {
-  const [token, setToken] = useState({});
+process.env.NODE_ENV === "production"
+  ? (url = process.env.URL)
+  : (url = "http://localhost:8080");
+import axios from 'axios';
+
+export default function Profile({ history }) {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [numOfBookings, setNumOfBookings] = useState('');
+
+  console.log(`Email is: ${email}`);
 
   useEffect(() => {
-    const tok = sessionStorage.getItem('authToken');
-    const decoded = jwt_decode(tok);
-    setToken(decoded.user);
+    const em = localStorage.getItem('email');
+    setEmail(localStorage.getItem('email'));
+    setName(localStorage.getItem('name'));
+    const fetchData = async () => {
+      await axios.get(`${url}/api/login/bookings/?email=${em}`).then((res) => { setNumOfBookings(res.data.bookings) }).catch((err) => { console.log(err); });
+    }
+    fetchData();
   }, []);
 
   const goBackToRoutes = (e) => {
@@ -21,12 +34,8 @@ export default function Profile({history}) {
       <section className='profile'>
         <header className='header'>
           <div className='details'>
-            <img
-              src='https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=b38c22a46932485790a3f52c61fcbe5a'
-              alt='John Doe'
-              className='profile-pic'
-            />
-            <h1 className='heading'> {token?.name} </h1>{' '}
+
+            <h1 className='heading'> {name} </h1>{' '}
             <div className='location'>
               <svg
                 className='svg-icon'
@@ -39,14 +48,14 @@ export default function Profile({history}) {
                   {' '}
                 </path>{' '}
               </svg>{' '}
-              <p> {token?.email} </p>{' '}
+              <p> {email} </p>{' '}
             </div>{' '}
             <div className='stats'>
               <div className='col-4'>
                 <h4> 20 </h4> <p> Reviews </p>{' '}
               </div>{' '}
               <div className='col-4'>
-                <h4> 10 </h4> <p> Bookings </p>{' '}
+                <h4> {numOfBookings} </h4> <p> Bookings </p>{' '}
               </div>{' '}
               <div className='col-4'>
                 <h4> 5 </h4> <p> 5 - Star </p>{' '}

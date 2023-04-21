@@ -17,13 +17,13 @@ process.env.NODE_ENV === "production"
 // }
 
 export function loadRoutes() {
-  const authToken = sessionStorage.getItem("authToken" || "");
-  let apiUrl = `${url}/user/profile?secret_token=${authToken}`;
+  const authToken = localStorage.getItem("authToken" || "");
+  let apiUrl = `${url}/api/user/profile?secret_token=${authToken}`;
   return axios.get(apiUrl);
 }
 
 export function getCurrentUserDetails(authToken) {
   const token = authToken;
-  let apiUrl = `${url}/user/profile?secret_token=${token}`;
+  let apiUrl = `${url}/api/user/profile?secret_token=${token}`;
   return axios.get(apiUrl);
 }
