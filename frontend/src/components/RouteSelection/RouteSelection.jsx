@@ -3,8 +3,10 @@ import RouteSelector from "../routeSelector/Routeselector";
 import SeatSelection from "../SeatSelection/SeatSelection";
 import PaymentTab from "../PaymentTab/PaymentTab";
 import { toast } from "react-toastify";
+import useKycStatus from "../../hooks/useKycStatus";
 
 export default function RouteSelection({ history }) {
+  useKycStatus();
   const handleUserIcon = (e) => {
     e.preventDefault();
     history.push("/profile");

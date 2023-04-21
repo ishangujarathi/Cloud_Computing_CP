@@ -2,14 +2,19 @@ import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import "./busList.css";
+import useKycStatus from "../../hooks/useKycStatus";
+
 export default function BusList({ value: dataInp }) {
+  useKycStatus();
   const [obj, setObj] = useState("");
   const [reset, Setreset] = useState(false);
   const [arrowDown, setArrowDown] = useState(false);
   const [clas, SetClas] = useState(true);
 
+
   useEffect(() => {
     setObj(dataInp);
+
   }, [dataInp]);
 
   const handleSubmit = (bId) => {

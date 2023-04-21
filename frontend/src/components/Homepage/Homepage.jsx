@@ -1,7 +1,9 @@
 import React from "react";
+import useKycStatus from "../../hooks/useKycStatus";
 import "./homepage.css";
 
 export default function Homepage({ history }) {
+  useKycStatus();
   const enterSite = (e) => {
     e.preventDefault();
     history.push("/login");

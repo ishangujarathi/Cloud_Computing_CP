@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import TicketComponent from '../TicketPage/TicketComponent';
 import styles from './prevhist.module.css';
+import useKycStatus from "../../hooks/useKycStatus";
 let url;
 
 process.env.NODE_ENV === "production"
@@ -10,6 +11,7 @@ process.env.NODE_ENV === "production"
   : (url = "http://localhost:8080");
 
 const TicketList = () => {
+  useKycStatus();
   const history = useHistory();
   const [tickets, setTickets] = useState([]);
   const email = localStorage.getItem('email');

@@ -2,8 +2,10 @@ import React from "react";
 import "./TicketPage.css";
 import axios from "axios";
 import { toast } from "react-toastify";
+import useKycStatus from "../../hooks/useKycStatus";
 
 export default function TicketPage({ history }) {
+  useKycStatus();
   const handleSignOut = (e) => {
     e.preventDefault();
     localStorage.removeItem("authToken");

@@ -1,7 +1,9 @@
 import React from 'react'
+import useKycStatus from "../../hooks/useKycStatus";
 import "./TicketPage.css";
 
 const TicketComponent = (props) => {
+  useKycStatus();
   const { from, to, names, arr, tokenData, dat } = props
   return (
     <div className="tpMain">

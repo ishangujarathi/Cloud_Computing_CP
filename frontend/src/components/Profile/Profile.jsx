@@ -6,8 +6,10 @@ process.env.NODE_ENV === "production"
   ? (url = process.env.URL)
   : (url = "http://localhost:8080");
 import axios from 'axios';
+import useKycStatus from "../../hooks/useKycStatus";
 
 export default function Profile({ history }) {
+  useKycStatus();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [numOfBookings, setNumOfBookings] = useState('');

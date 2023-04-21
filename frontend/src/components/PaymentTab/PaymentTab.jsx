@@ -4,6 +4,7 @@ import Card from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 import { toast } from "react-toastify";
 import axios from "axios";
+import useKycStatus from "../../hooks/useKycStatus";
 import jwt_decode from "jwt-decode";
 import {
   formatCreditCardNumber,
@@ -18,6 +19,7 @@ process.env.NODE_ENV === "production"
 import "./PaymentTab.css";
 
 const PaymentTab = () => {
+  useKycStatus();
   const email = localStorage.getItem("email");
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");

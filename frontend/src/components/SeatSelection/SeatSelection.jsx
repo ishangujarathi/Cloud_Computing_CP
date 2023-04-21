@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import "./Tab.css";
+import useKycStatus from "../../hooks/useKycStatus";
 let url;
 
 process.env.NODE_ENV === "production"
@@ -9,6 +10,7 @@ process.env.NODE_ENV === "production"
 import { toast } from "react-toastify";
 
 export default function SeatSelection() {
+  useKycStatus();
   const [name, setName] = useState([]);
   const [arrowDown, setArrowDown] = useState(false);
   const [gender, setGender] = useState([]);

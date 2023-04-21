@@ -3,8 +3,10 @@ import "./Routeselector.css";
 import * as apiCall from "./routeApifunc";
 import BusList from "../BusList/BusList";
 import { toast } from "react-toastify";
+import useKycStatus from "../../hooks/useKycStatus";
 
 export default function Routeselector() {
+  useKycStatus();
   const [dataInp, setData] = useState("");
   const [startCity, setStartCity] = useState("");
   const [destination, setDestination] = useState("");
