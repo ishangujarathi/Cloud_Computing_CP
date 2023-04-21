@@ -42,7 +42,11 @@ const UserSchema = new Schema({
   bookings: {
     type: Number,
     default: 0,
-  }
+  },
+  kycStatus: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const User = mongoose.model("user", UserSchema);

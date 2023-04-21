@@ -1,8 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "./adminhome.css";
 
 function AdminHome() {
   const role = localStorage.getItem("role");
+  const history = useHistory();
   return (
     <>
       {role === "admin" ? (
@@ -12,8 +14,8 @@ function AdminHome() {
             <button
               className="approve-kyc"
               onClick={(e) => {
-                e.preve();
-                history.push("/kycApprove");
+                e.preventDefault();
+                history.push("/kycList");
               }}
             >
               Approve KYC
@@ -21,7 +23,7 @@ function AdminHome() {
             <button
               className="payment-approval"
               onClick={(e) => {
-                e.preve();
+                e.preventDefault();
                 history.push("/paymentApprove");
               }}
             >

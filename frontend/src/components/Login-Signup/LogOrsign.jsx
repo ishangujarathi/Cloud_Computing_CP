@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import * as logFunc from "./loginFunctions.jsx";
 import "./logOrsign.css";
-import { FaFacebookF, FaTwitterSquare } from "react-icons/fa";
 import axios from "axios";
 import { toast } from "react-toastify";
 let url;
@@ -33,15 +31,21 @@ export default function LogOrsign({ history }) {
         },
       });
 
-      const { token, role, email, name, bookings } = res.data;
+      const { token, role, email, name, bookings, kycStatus } = res.data;
       console.log(`Role is: ${JSON.stringify(res)}`);
       localStorage.setItem("authToken", token);
       localStorage.setItem("role", role);
       localStorage.setItem("email", email);
       localStorage.setItem("name", name);
       localStorage.setItem("numOfBookings", bookings);
+      localStorage.setItem("kycStatus", kycStatus);
       toast.success("Login Successful");
-      role === "user" ? history.push("/routes") : history.push("/adminhome");
+      if (kycStatus === false && role === "user") {
+        history.push("/kyc");
+      }
+      else {
+        role === "user" ? history.push("/routes") : history.push("/adminhome");
+      }
     } catch (error) {
       console.error(error);
     }

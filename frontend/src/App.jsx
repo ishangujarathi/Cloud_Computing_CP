@@ -12,9 +12,11 @@ import ResetPassword from "./components/Login-Signup/ResetPassword";
 import AdminHome from "./components/Homepage/AdminHome";
 import PreviousHistory from "./components/PrevHist/PreviousHistory";
 import KycApprovalList from "./components/KYC/KycApprovalList";
+import KycApproval from "./components/KYC/KycApproval";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import KycCall from "./components/KYC/KycCall";
 
 function App({ user }) {
   return (
@@ -53,6 +55,18 @@ function App({ user }) {
             path="/kycList"
             exact
             render={(props) => <KycApprovalList {...props} />}
+          />
+
+          <Route
+            path="/kycApproval"
+            exact
+            render={(props) => <KycApproval {...props} />}
+          />
+
+          <Route
+            path="/kyc"
+            exact
+            render={(props) => <KycCall {...props} />}
           />
 
           <Route

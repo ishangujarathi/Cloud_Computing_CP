@@ -14,6 +14,7 @@ require("./auth/auth");
 const loginRouter = require("./routes/login");
 const loggedInPage = require("./routes/loggedInUser");
 const ticketRouter = require("./routes/ticket");
+const kycRouter = require("./routes/kyc");
 // ----------------------------------------------------
 
 const bookingRoute = require("./routes/routeSelection");
@@ -52,6 +53,7 @@ app.use("/api/login", loginRouter);
 app.use("/api/booking", bookingRoute);
 app.use("/api/register", registerRouter); // To register page
 app.use("/api/ticket", ticketRouter);
+app.use("/api/kyc", kycRouter);
 app.use(
   "/api/user",
   passport.authenticate("jwt", { session: false }),

@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+let url;
+
+process.env.NODE_ENV === "production"
+  ? (url = process.env.URL)
+  : (url = "http://localhost:8080");
 
 const KycApprovalList = () => {
   const [users, setUsers] = useState([]);
@@ -10,12 +15,11 @@ const KycApprovalList = () => {
   useEffect(() => {
     // fetch the list of registered users from a server
     // and update the state with the list of users
-    axios.defaults.withCredentials = true;
     const fetchUsers = async () => {
       await axios
-        .get(`https://localhost:8080/api/login/users`)
+        .get(`${url}/api/login/users/kyc`)
         .then((res) => {
-          setUsers(res?.data);
+          setUsers(res.data?.result);
         })
         .catch((err) => {
           toast.error(err.message);
@@ -24,10 +28,10 @@ const KycApprovalList = () => {
     fetchUsers();
   }, []);
 
-  const handleUserClick = (userId) => {
+  const handleUserClick = (email) => {
     history.push({
       pathname: "/kycApproval",
-      state: { userId: userId },
+      state: { email: email },
     });
   };
 
@@ -36,12 +40,9 @@ const KycApprovalList = () => {
       <h1>KYC Approval List</h1>
       <ul>
         {users.map((user) => (
-          <li key={user.id}>
-            <button onClick={() => handleUserClick(user.id)}>
-              Username: {user.username}
-              UserId: {user.id}
-            </button>
-          </li>
+          <button style={{ fontSize: "medium" }} key={user.email} onClick={() => handleUserClick(user.email)}>
+            Name Of User: {user.name}
+          </button>
         ))}
       </ul>
     </div>
