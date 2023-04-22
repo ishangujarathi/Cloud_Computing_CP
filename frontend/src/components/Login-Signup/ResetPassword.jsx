@@ -3,7 +3,7 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import "./ResetPassword.css"; // import CSS file for styling
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-const url = process.env.URL
+const url = process.env.URL; url = url.replace(/\/undefined$/, "");
 
 function ResetPassword() {
   const location = useLocation();

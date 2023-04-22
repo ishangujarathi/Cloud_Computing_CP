@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = process.env.URL
+const url = process.env.URL; url = url.replace(/\/undefined$/, "");
 
 // export async function logUserIn(userCredentials) {
 //   let apiUrl = `${url}/login`;

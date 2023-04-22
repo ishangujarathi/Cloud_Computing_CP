@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "./ForgotPassword.css";
 
-const url = process.env.URL
+const url = process.env.URL; url = url.replace(/\/undefined$/, "");
 
 function ForgotPassword() {
   const history = useHistory();

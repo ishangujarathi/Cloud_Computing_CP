@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import "./Tab.css";
 import useKycStatus from "../../hooks/useKycStatus";
-const url = process.env.URL
+const url = process.env.URL; url = url.replace(/\/undefined$/, "");
 import { toast } from "react-toastify";
 
 export default function SeatSelection() {

@@ -4,7 +4,7 @@ import axios from 'axios';
 import TicketComponent from '../TicketPage/TicketComponent';
 import styles from './prevhist.module.css';
 import useKycStatus from "../../hooks/useKycStatus";
-const url = process.env.URL
+const url = process.env.URL; url = url.replace(/\/undefined$/, "");
 
 const TicketList = () => {
   useKycStatus();
