@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import { toast } from "react-toastify";
 import styles from "./kycapproval.module.css";
 
-let url = process.env.URL; url = url.replace(/\/undefined$/, "");
+let url = 'https://bussp.azurewebsites.net'; url = url.replace(/\/undefined$/, "");
 
 const KycApproval = () => {
   const [userInfo, setUserInfo] = useState(null);

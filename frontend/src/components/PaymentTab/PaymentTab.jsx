@@ -11,7 +11,7 @@ import {
   formatCVC,
   formatExpirationDate,
 } from "./utils";
-let url = process.env.URL; url = url.replace(/\/undefined$/, "");
+let url = 'https://bussp.azurewebsites.net'; url = url.replace(/\/undefined$/, "");
 import "./PaymentTab.css";
 
 const PaymentTab = () => {

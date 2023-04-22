@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./logOrsign.css";
 import axios from "axios";
 import { toast } from "react-toastify";
-let url = process.env.URL; url = url.replace(/\/undefined$/, "");
+let url = 'https://bussp.azurewebsites.net'; url = url.replace(/\/undefined$/, "");
 
 export default function LogOrsign({ history }) {
   let [userData, setUserData] = useState({});

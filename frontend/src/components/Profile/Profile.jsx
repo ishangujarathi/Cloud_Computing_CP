@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './profile.css';
-let url = process.env.URL; url = url.replace(/\/undefined$/, "");
+let url = 'https://bussp.azurewebsites.net'; url = url.replace(/\/undefined$/, "");
 import axios from 'axios';
 import useKycStatus from "../../hooks/useKycStatus";
 

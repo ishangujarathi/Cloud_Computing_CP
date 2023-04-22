@@ -4,7 +4,7 @@ import axios from 'axios';
 import TicketComponent from '../TicketPage/TicketComponent';
 import styles from './prevhist.module.css';
 import useKycStatus from "../../hooks/useKycStatus";
-let url = process.env.URL; url = url.replace(/\/undefined$/, "");
+let url = 'https://bussp.azurewebsites.net'; url = url.replace(/\/undefined$/, "");
 
 const TicketList = () => {
   useKycStatus();

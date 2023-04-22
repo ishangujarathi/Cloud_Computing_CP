@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import styles from "./kycall.module.css";
 import axios from "axios";
-let url = process.env.URL; url = url.replace(/\/undefined$/, "");
+let url = 'https://bussp.azurewebsites.net'; url = url.replace(/\/undefined$/, "");
 
 const KycCall = () => {
   const [fullName, setFullName] = useState("");
