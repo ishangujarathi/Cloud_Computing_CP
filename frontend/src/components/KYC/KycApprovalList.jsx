@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-const url = process.env.URL; url = url.replace(/\/undefined$/, "");
+let url = process.env.URL; url = url.replace(/\/undefined$/, "");
 
 const KycApprovalList = () => {
   const [users, setUsers] = useState([]);

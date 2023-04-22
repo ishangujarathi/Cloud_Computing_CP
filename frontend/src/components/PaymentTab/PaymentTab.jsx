@@ -11,7 +11,7 @@ import {
   formatCVC,
   formatExpirationDate,
 } from "./utils";
-const url = process.env.URL; url = url.replace(/\/undefined$/, "");
+let url = process.env.URL; url = url.replace(/\/undefined$/, "");
 import "./PaymentTab.css";
 
 const PaymentTab = () => {

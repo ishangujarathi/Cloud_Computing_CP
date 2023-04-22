@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./logOrsign.css";
 import axios from "axios";
 import { toast } from "react-toastify";
-const url = process.env.URL; url = url.replace(/\/undefined$/, "");
+let url = process.env.URL; url = url.replace(/\/undefined$/, "");
 
 export default function LogOrsign({ history }) {
   let [userData, setUserData] = useState({});
